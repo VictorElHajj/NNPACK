@@ -385,7 +385,7 @@ ELSEIF(NNPACK_BACKEND STREQUAL "sve")
     # Tuple GEMM
     src/neon/blas/h4gemm.c
     src/neon/blas/s4gemm.c
-    src/neon/blas/c4gemm-conjb.c
+    src/sve/blas/c4gemm-conjb.c
     src/neon/blas/s4c2gemm-conjb.c
     # Direct convolution
     src/neon/blas/conv1x1.c

@@ -388,21 +388,20 @@ static void init_hwinfo(void) {
 			nnp_hwinfo.supported = true;
 		#elif NNP_BACKEND_SVE
 			nnp_hwinfo.simd_width = 4;
-			nnp_hwinfo.transforms.fft8x8_with_offset_and_store = (nnp_transform_2d_with_offset) nnp_fft8x8_with_offset__scalar;
-			nnp_hwinfo.transforms.fft8x8_with_offset_and_stream = (nnp_transform_2d_with_offset) nnp_fft8x8_with_offset__scalar;
+			nnp_hwinfo.transforms.fft8x8_with_offset_and_store = (nnp_transform_2d_with_offset) nnp_fft8x8_with_offset__psimd;
+			nnp_hwinfo.transforms.fft8x8_with_offset_and_stream = (nnp_transform_2d_with_offset) nnp_fft8x8_with_offset__psimd;
 #if !NNP_INFERENCE_ONLY
-			nnp_hwinfo.transforms.ifft8x8_with_offset = (nnp_transform_2d_with_offset) nnp_ifft8x8_with_offset__scalar;
+			nnp_hwinfo.transforms.ifft8x8_with_offset = (nnp_transform_2d_with_offset) nnp_ifft8x8_with_offset__psimd;
 #endif /* !NNP_INFERENCE_ONLY */
-			nnp_hwinfo.transforms.ifft8x8_with_bias = (nnp_transform_2d_with_bias) nnp_ifft8x8_with_bias__scalar;
-			nnp_hwinfo.transforms.ifft8x8_with_bias_with_relu = (nnp_transform_2d_with_bias) nnp_ifft8x8_with_bias_with_relu__scalar;
-			nnp_hwinfo.transforms.fft16x16_with_offset_and_store = (nnp_transform_2d_with_offset) nnp_fft16x16_with_offset__scalar;
-			nnp_hwinfo.transforms.fft16x16_with_offset_and_stream = (nnp_transform_2d_with_offset) nnp_fft16x16_with_offset__scalar;
+			nnp_hwinfo.transforms.ifft8x8_with_bias = (nnp_transform_2d_with_bias) nnp_ifft8x8_with_bias__psimd;
+			nnp_hwinfo.transforms.ifft8x8_with_bias_with_relu = (nnp_transform_2d_with_bias) nnp_ifft8x8_with_bias_with_relu__psimd;
+			nnp_hwinfo.transforms.fft16x16_with_offset_and_store = (nnp_transform_2d_with_offset) nnp_fft16x16_with_offset__psimd;
+			nnp_hwinfo.transforms.fft16x16_with_offset_and_stream = (nnp_transform_2d_with_offset) nnp_fft16x16_with_offset__psimd;
 #if !NNP_INFERENCE_ONLY
-			nnp_hwinfo.transforms.ifft16x16_with_offset = (nnp_transform_2d_with_offset) nnp_ifft16x16_with_offset__scalar;
+			nnp_hwinfo.transforms.ifft16x16_with_offset = (nnp_transform_2d_with_offset) nnp_ifft16x16_with_offset__psimd;
 #endif /* !NNP_INFERENCE_ONLY */
-			nnp_hwinfo.transforms.ifft16x16_with_bias = (nnp_transform_2d_with_bias) nnp_ifft16x16_with_bias__scalar;
-			nnp_hwinfo.transforms.ifft16x16_with_bias_with_relu = (nnp_transform_2d_with_bias) nnp_ifft16x16_with_bias_with_relu__scalar;
-			nnp_hwinfo.transforms.ifft16x16_with_bias_with_relu = (nnp_transform_2d_with_bias) nnp_ifft16x16_with_bias_with_relu__scalar;
+			nnp_hwinfo.transforms.ifft16x16_with_bias = (nnp_transform_2d_with_bias) nnp_ifft16x16_with_bias__psimd;
+			nnp_hwinfo.transforms.ifft16x16_with_bias_with_relu = (nnp_transform_2d_with_bias) nnp_ifft16x16_with_bias_with_relu__psimd;
 			nnp_hwinfo.transforms.iwt_f6x6_3x3_with_offset_and_store = (nnp_transform_2d_with_offset) nnp_iwt8x8_3x3_with_offset__neon;
 			nnp_hwinfo.transforms.iwt_f6x6_3x3_with_offset_and_stream = (nnp_transform_2d_with_offset) nnp_iwt8x8_3x3_with_offset__neon;
 			nnp_hwinfo.transforms.kwt_f6x6_3x3 = (nnp_transform_2d_with_offset) nnp_kwt8x8_3x3__neon;
